@@ -3,6 +3,7 @@ import { writeFile } from 'node:fs/promises';
 import { Buffer } from 'node:buffer';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
 const create = async () => {
   try {
     const __dirname = dirname(fileURLToPath(import.meta.url));
