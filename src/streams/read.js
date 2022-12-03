@@ -7,13 +7,13 @@ const read = async () => {
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const fileForStream = path.join(__dirname, 'files', 'fileToRead.txt');
 
-  const stream = createReadStream(fileForStream, 'utf-8');
+  const readStream = createReadStream(fileForStream, 'utf-8');
   
   let data = '';
   
-  stream.on('data', chunk => data += chunk);
-  stream.on('end', () => stdout.write(data));
-  stream.on('error', error => console.log('Error', error.message));
+  readStream.on('data', chunk => data += chunk);
+  readStream.on('end', () => stdout.write(data));
+  readStream.on('error', error => console.log('Error', error.message));
 };
 
 await read();
