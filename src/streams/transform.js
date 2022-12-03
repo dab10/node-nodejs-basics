@@ -1,4 +1,3 @@
-import { stdin, stdout } from 'node:process';
 import { pipeline, Transform } from 'node:stream';
 
 const transform = async () => {
