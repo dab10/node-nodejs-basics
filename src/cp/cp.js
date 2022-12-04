@@ -7,7 +7,10 @@ const spawnChildProcess = async (args) => {
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const fileCP = path.join(__dirname, 'files', 'script.js');
 
-  const child = spawn('node', [fileCP, ...args]);
+  let argsChild;
+  Array.isArray(args) ? argsChild = args : argsChild = args.split(' ')
+
+  const child = spawn('node', [fileCP, ...argsChild]);
 
   stdin.on('data', (data) => child.stdin.write(data));
 
@@ -15,4 +18,4 @@ const spawnChildProcess = async (args) => {
 };
 
 // Put your arguments in function call to test this functionality
-spawnChildProcess([1, 2]);
+spawnChildProcess([2, 3, 4]);
