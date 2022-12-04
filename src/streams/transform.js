@@ -1,5 +1,20 @@
+import { pipeline, Transform } from 'node:stream';
+
 const transform = async () => {
-    // Write your code here 
+  const transform = new Transform({
+    transform(chunk, encoding, callback) {
+      callback(null, chunk.toString().trim().split('').reverse().join('') + '\n');
+    }
+  })
+
+  pipeline(
+    process.stdin,
+    transform,
+    process.stdout,
+    err => {
+      console.log(`Error: ${err}`);
+    }
+  )
 };
 
 await transform();
